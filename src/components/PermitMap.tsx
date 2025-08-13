@@ -17,11 +17,9 @@ L.Icon.Default.mergeOptions({
 
 interface PermitMapProps {
   permits: Permit[]
-  selectedMunicipalities: string[]
-  onMunicipalityClick: (municipality: string) => void
 }
 
-export default function PermitMap({ permits, selectedMunicipalities, onMunicipalityClick }: PermitMapProps) {
+export default function PermitMap({ permits }: PermitMapProps) {
   const mapRef = useRef<L.Map | null>(null)
   const mapContainerRef = useRef<HTMLDivElement>(null)
 
@@ -49,7 +47,7 @@ export default function PermitMap({ permits, selectedMunicipalities, onMunicipal
       // Simple geocoding simulation - in production, use real coordinates
       const coords = getCoordinatesForMunicipality(permit.municipality)
       if (coords) {
-        const marker = L.marker(coords)
+        L.marker(coords)
           .addTo(mapRef.current!)
           .bindPopup(`
             <div class="p-2">

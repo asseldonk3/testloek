@@ -176,17 +176,7 @@ function App() {
         )}
 
         {viewMode === 'map' && (
-          <PermitMap
-            permits={permits}
-            selectedMunicipalities={selectedMunicipalities}
-            onMunicipalityClick={(municipality) => {
-              if (selectedMunicipalities.includes(municipality)) {
-                setSelectedMunicipalities(selectedMunicipalities.filter(m => m !== municipality))
-              } else {
-                setSelectedMunicipalities([...selectedMunicipalities, municipality])
-              }
-            }}
-          />
+          <PermitMap permits={permits} />
         )}
 
         {viewMode === 'dashboard' && (
